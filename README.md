@@ -41,11 +41,20 @@ Add players to the `PLAYERS` array, pointing `clubId` at one of the `CLUBS` ids:
       competition: "League",
       minute: 23,
       description: "Right-footed finish from inside the box.",
-      youtube: "https://www.youtube.com/watch?v=XXXXXXXXXXX" // or just the 11-char video ID, or "" if none yet
+      youtube: "https://www.youtube.com/watch?v=XXXXXXXXXXX", // or just the 11-char video ID, or "" if none yet
+      start: 95,   // optional: seconds into the video where the goal happens — jumps the embed there
+      end: 110     // optional: seconds where playback stops
     }
   ]
 }
 ```
+
+`start`/`end` are useful when the only embeddable clip you can find is a longer vlog, reaction video,
+or compilation rather than a clean single-goal highlight — many broadcaster "highlights" clips
+(Sky Sports, NBC, official club channels) disable embedding entirely, so fan/reaction/compilation
+uploads are often the only option. Scrub to the goal in the video once, note the timestamp in
+seconds, and set `start` (and optionally `end`) so the embed opens right on the goal instead of at
+0:00. Every goal card also shows a "Watch on YouTube" link as a fallback.
 
 Add as many players and goals as you like — club pages and player pages update automatically.
 The two `sample-*` players are placeholders; delete or repurpose them once you add real data.

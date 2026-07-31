@@ -35,16 +35,22 @@ function formatDate(iso) {
 
 function goalCardHtml(goal) {
   const videoId = extractYouTubeId(goal.youtube);
+  const embedParams = new URLSearchParams();
+  if (goal.start) embedParams.set("start", goal.start);
+  if (goal.end) embedParams.set("end", goal.end);
+  const embedQuery = embedParams.toString() ? `?${embedParams.toString()}` : "";
+  const watchSuffix = goal.start ? `&t=${goal.start}s` : "";
+
   const media = videoId
     ? `<div class="video-frame">
          <iframe
-           src="https://www.youtube.com/embed/${videoId}"
+           src="https://www.youtube.com/embed/${videoId}${embedQuery}"
            title="Goal vs ${goal.opponent}"
            loading="lazy"
            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
            allowfullscreen></iframe>
        </div>
-       <a class="watch-link" href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener">Watch on YouTube ↗</a>`
+       <a class="watch-link" href="https://www.youtube.com/watch?v=${videoId}${watchSuffix}" target="_blank" rel="noopener">Watch on YouTube ↗</a>`
     : `<div class="video-placeholder">No video linked yet</div>`;
 
   return `
