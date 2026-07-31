@@ -38,17 +38,15 @@ function goalCardHtml(goal) {
   const embedParams = new URLSearchParams();
   if (goal.start) embedParams.set("start", goal.start);
   if (goal.end) embedParams.set("end", goal.end);
-  const embedQuery = embedParams.toString() ? `?${embedParams.toString()}` : "";
+  const embedQuery = embedParams.toString() ? `&${embedParams.toString()}` : "";
   const watchSuffix = goal.start ? `&t=${goal.start}s` : "";
 
   const media = videoId
-    ? `<div class="video-frame">
-         <iframe
-           src="https://www.youtube.com/embed/${videoId}${embedQuery}"
-           title="Goal vs ${goal.opponent}"
-           loading="lazy"
-           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-           allowfullscreen></iframe>
+    ? `<div class="video-frame" data-video-id="${videoId}" data-embed-query="${embedQuery}">
+         <button type="button" class="video-cover" aria-label="Play goal vs ${goal.opponent}">
+           <span class="video-cover-ball">⚽</span>
+           <span class="video-play-badge">▶</span>
+         </button>
        </div>
        <a class="watch-link" href="https://www.youtube.com/watch?v=${videoId}${watchSuffix}" target="_blank" rel="noopener">Watch on YouTube ↗</a>`
     : `<div class="video-placeholder">No video linked yet</div>`;
@@ -104,6 +102,21 @@ function renderPlayerPage() {
   listEl.innerHTML = goals.length
     ? goals.map(goalCardHtml).join("")
     : '<p class="empty-state">No goals recorded yet.</p>';
+
+  listEl.addEventListener("click", (e) => {
+    const cover = e.target.closest(".video-cover");
+    if (!cover) return;
+    const frame = cover.closest(".video-frame");
+    const videoId = frame.dataset.videoId;
+    const embedQuery = frame.dataset.embedQuery || "";
+    frame.innerHTML = `
+      <iframe
+        src="https://www.youtube.com/embed/${videoId}?autoplay=1${embedQuery}"
+        title="Goal video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    `;
+  });
 }
 
 renderPlayerPage();
