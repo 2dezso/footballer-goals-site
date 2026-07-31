@@ -72,5 +72,57 @@ const PLAYERS = [
         youtube: ""
       }
     ]
+  },
+  {
+    // Real player, but goals are from the 2025/26 season (last season) rather
+    // than the 2026/27 season this site otherwise tracks — added just to test
+    // the goal/video layout with real data.
+    id: "szoboszlai",
+    name: "Dominik Szoboszlai",
+    clubId: "liverpool",
+    position: "Midfielder",
+    number: 8,
+    goals: [
+      {
+        date: "2025-08-31",
+        opponent: "Arsenal",
+        competition: "Premier League",
+        minute: 83,
+        description: "Thumping 30-yard free-kick into the top corner to win it at Anfield.",
+        youtube: "https://www.youtube.com/watch?v=EIdDpYcwcxY"
+      },
+      {
+        date: "2025-12-06",
+        opponent: "Leeds United",
+        competition: "Premier League",
+        minute: 80,
+        description: "Touch and low finish at Elland Road to restore Liverpool's lead.",
+        youtube: "https://www.youtube.com/watch?v=gw9dVJ1voiI"
+      },
+      {
+        date: "2026-01-24",
+        opponent: "Bournemouth",
+        competition: "Premier League",
+        minute: 80,
+        description: "Free-kick blasted into the corner to level the game at 2-2.",
+        youtube: "https://www.youtube.com/watch?v=aEVO9UgIxjM"
+      },
+      {
+        date: "2026-03-15",
+        opponent: "Tottenham Hotspur",
+        competition: "Premier League",
+        minute: 18,
+        description: "Free-kick curled into the top corner at Anfield.",
+        youtube: "https://www.youtube.com/watch?v=0oxAGgBY2Jg"
+      },
+      {
+        date: "2026-05-03",
+        opponent: "Manchester United",
+        competition: "Premier League",
+        minute: 47,
+        description: "Pounced on a defensive error to pull Liverpool level at Old Trafford.",
+        youtube: "https://www.youtube.com/watch?v=qqAOAVQodo8"
+      }
+    ]
   }
 ];
