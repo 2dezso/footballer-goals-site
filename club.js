@@ -21,8 +21,13 @@ function renderClubPage() {
     return;
   }
 
-  headerEl.style.setProperty("--club-color", club.color);
-  headerEl.style.setProperty("--club-text", club.text || "#fff");
+  document.title = `${club.name} · Goals Goals Goals`;
+
+  const root = document.documentElement.style;
+  root.setProperty("--club-color", club.color);
+  root.setProperty("--club-text", club.text || "#fff");
+  root.setProperty("--club-glow", `${club.color}55`);
+
   headerEl.classList.add("club-banner");
   headerEl.insertAdjacentHTML("beforeend", `
     <div class="club-header-body">
@@ -36,10 +41,13 @@ function renderClubPage() {
   gridEl.innerHTML = players.length
     ? players.map((player) => `
       <a class="player-card" href="player.html?id=${encodeURIComponent(player.id)}">
-        <div class="player-avatar" style="background: ${club.color}; color: ${club.text || "#fff"}">${initials(player.name)}</div>
+        <div class="player-avatar">${initials(player.name)}</div>
         <div class="player-name">${player.name}</div>
-        <div class="player-meta">${player.position}${player.number ? ` &middot; #${player.number}` : ""}</div>
-        <div class="goal-count">${player.goals.length} goal${player.goals.length === 1 ? "" : "s"} this season</div>
+        <div class="card-subtext">${player.position}${player.number ? ` &middot; #${player.number}` : ""}</div>
+        <div class="hero-stat">
+          <span class="stat-number">${player.goals.length}</span>
+          <span class="stat-label">Goal${player.goals.length === 1 ? "" : "s"}</span>
+        </div>
       </a>
     `).join("")
     : '<p class="empty-state">No players tracked for this club yet. Add some in data.js.</p>';

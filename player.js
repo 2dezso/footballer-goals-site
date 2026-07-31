@@ -76,9 +76,13 @@ function renderPlayerPage() {
 
   const club = CLUBS.find((c) => c.id === player.clubId);
 
+  document.title = `${player.name} · Goals Goals Goals`;
+
   if (club) {
-    headerWrap.style.setProperty("--club-color", club.color);
-    headerWrap.style.setProperty("--club-text", club.text || "#fff");
+    const root = document.documentElement.style;
+    root.setProperty("--club-color", club.color);
+    root.setProperty("--club-text", club.text || "#fff");
+    root.setProperty("--club-glow", `${club.color}55`);
     headerWrap.classList.add("club-banner");
     backLink.href = `club.html?id=${encodeURIComponent(club.id)}`;
     backLink.textContent = `← ${club.name}`;
