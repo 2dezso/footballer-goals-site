@@ -63,18 +63,30 @@ function renderPlayerPage() {
   const id = params.get("id");
   const player = PLAYERS.find((p) => p.id === id);
 
+  const headerWrap = document.getElementById("player-header-wrap");
   const headerEl = document.getElementById("player-header");
+  const backLink = document.getElementById("back-link");
   const listEl = document.getElementById("goal-list");
 
   if (!player) {
     headerEl.innerHTML = "<h2>Player not found</h2>";
-    listEl.innerHTML = '<p class="empty-state">Check the link, or pick a player from the home page.</p>';
+    listEl.innerHTML = '<p class="empty-state">Check the link, or pick a player from a club page.</p>';
     return;
+  }
+
+  const club = CLUBS.find((c) => c.id === player.clubId);
+
+  if (club) {
+    headerWrap.style.setProperty("--club-color", club.color);
+    headerWrap.style.setProperty("--club-text", club.text || "#fff");
+    headerWrap.classList.add("club-banner");
+    backLink.href = `club.html?id=${encodeURIComponent(club.id)}`;
+    backLink.textContent = `← ${club.name}`;
   }
 
   headerEl.innerHTML = `
     <h2>${player.name}</h2>
-    <p class="player-meta">${player.team} &middot; ${player.position}${player.number ? ` &middot; #${player.number}` : ""} &middot; ${player.goals.length} goal${player.goals.length === 1 ? "" : "s"} this season</p>
+    <p class="player-meta">${club ? club.name + " · " : ""}${player.position}${player.number ? ` &middot; #${player.number}` : ""} &middot; ${player.goals.length} goal${player.goals.length === 1 ? "" : "s"} this season</p>
   `;
 
   const goals = [...player.goals].sort((a, b) => new Date(a.date) - new Date(b.date));
