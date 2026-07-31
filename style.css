@@ -315,6 +315,16 @@ main {
   font-size: 0.9rem;
 }
 
+.watch-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  color: var(--club-color, var(--green-dark));
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.watch-link:hover { text-decoration: underline; }
+
 .empty-state {
   color: var(--muted);
   text-align: center;

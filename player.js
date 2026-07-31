@@ -43,7 +43,8 @@ function goalCardHtml(goal) {
            loading="lazy"
            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
            allowfullscreen></iframe>
-       </div>`
+       </div>
+       <a class="watch-link" href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener">Watch on YouTube ↗</a>`
     : `<div class="video-placeholder">No video linked yet</div>`;
 
   return `
