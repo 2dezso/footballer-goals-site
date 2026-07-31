@@ -89,7 +89,9 @@ const PLAYERS = [
         competition: "Premier League",
         minute: 83,
         description: "Thumping 30-yard free-kick into the top corner to win it at Anfield.",
-        youtube: "https://www.youtube.com/watch?v=K0nNW8BVNLg"
+        youtube: "https://www.youtube.com/watch?v=K0nNW8BVNLg",
+        start: 358,
+        end: 364
       },
       {
         date: "2025-12-06",
@@ -97,7 +99,9 @@ const PLAYERS = [
         competition: "Premier League",
         minute: 80,
         description: "Touch and low finish at Elland Road to restore Liverpool's lead.",
-        youtube: "https://www.youtube.com/watch?v=gx9jZjByZDg"
+        youtube: "https://www.youtube.com/watch?v=gx9jZjByZDg",
+        start: 440,
+        end: 445
       },
       {
         date: "2026-01-24",
@@ -105,7 +109,7 @@ const PLAYERS = [
         competition: "Premier League",
         minute: 80,
         description: "Free-kick blasted into the corner to level the game at 2-2.",
-        youtube: "https://www.youtube.com/watch?v=qS4YroCfk0Q"
+        youtube: ""
       },
       {
         date: "2026-03-15",
@@ -121,7 +125,7 @@ const PLAYERS = [
         competition: "Premier League",
         minute: 47,
         description: "Pounced on a defensive error to pull Liverpool level at Old Trafford.",
-        youtube: "https://www.youtube.com/watch?v=HNpt6RgTw-s"
+        youtube: ""
       }
     ]
   }
